@@ -284,6 +284,14 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
+// URL rewriting middleware to support both local prefix and Vercel prefix stripping
+app.use((req, _res, next) => {
+  if (!req.url.startsWith('/api') && req.url !== '/favicon.ico') {
+    req.url = '/api' + req.url;
+  }
+  next();
+});
+
 // Health Check
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', service: 'point-noir-api' });
