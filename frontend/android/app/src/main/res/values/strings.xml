@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Black Point</string>
+    <string name="title_activity_main">Black Point</string>
+    <string name="package_name">com.ryan.blackpoint</string>
+    <string name="custom_url_scheme">com.ryan.blackpoint</string>
+</resources>
