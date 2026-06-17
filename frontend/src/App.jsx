@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMap, ZoomControl } from 'react-leaflet';
 import L from 'leaflet';
 import { X, Calendar, MessageSquare, Plus, Star, Moon, Sun, LogOut } from 'lucide-react';
 
@@ -568,6 +568,7 @@ function MapView({ incidents, userLat, userLng, onSelect }) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         className="map-tiles"
       />
+      <ZoomControl position="bottomright" />
       <RecenterMap lat={userLat} lng={userLng} />
       <Marker position={[userLat, userLng]} icon={userIcon} />
       {incidents.map((inc) => (
