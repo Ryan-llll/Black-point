@@ -10,7 +10,10 @@ import { X, Calendar, MessageSquare, Plus, Star, Moon, Sun, LogOut } from 'lucid
 // ==========================================
 const DEFAULT_CENTER = { lat: 33.5348, lng: -5.1105 }; // Seeding coords centered in Ifrane demo zone
 
-const api = axios.create({ baseURL: '/api' });
+const API_BASE = import.meta.env.VITE_API_URL 
+  ? `${import.meta.env.VITE_API_URL}/api` 
+  : '/api';
+const api = axios.create({ baseURL: API_BASE });
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('pn_token');
